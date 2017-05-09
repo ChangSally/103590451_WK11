@@ -1,0 +1,69 @@
+.mdl-card {
+  margin : 30px auto;
+}
+
+#sign-info {
+  color: black;
+  font-size: 120%;
+}
+
+#user-info {
+  padding: 10px;
+  width: 216px;
+  box-sizing: border-box;
+}
+
+#user-pic {
+  padding:10px;
+  width: 72px;
+  box-sizing: border-box;
+ // border-radius : 50%;
+}
+
+input(type="password") {
+  font:large;
+  font-size:150%;
+}
+
+.demo-avatar {
+    width: 60px;
+    height: 60px;
+ border-radius:99em;   padding: 0px; //border : 1px solid red;
+}
+ul {
+  list-style: none;
+  margin: 0px;
+  padding: 20px;
+  height: 200px;
+  overflow: auto;
+}
+ul li {
+    font-family: Roboto;
+    font-size: 120%;
+    font-weight: 300;
+    margin-bottom: 10px;
+    line-height: 24px;
+}
+ul li:last-child {
+    margin: 0px;
+}
+ul .example-chat-username {
+    margin-right: 10px;
+}
+
+a{
+	text-decoration : none;
+    height:30px;
+    width:30px;
+	color : black;
+}
+a:hover {
+	color : dimgray;
+}
+
+.space{
+    margin-left:225px;
+    border:1px solid;
+    border-radius: 3px;
+    padding:5px;
+}

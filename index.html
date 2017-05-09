@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fire Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Roboto Font -->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
+
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase.js"></script>
+
+  <!-- jQuery -->
+  <script src="js/jquery.js"></script>
+
+  <!-- Material Design Lite -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.indigo-pink.min.css">
+  <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+  <!-- Custom -->
+  <script src="js/script.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+  $(document).ready(function(){
+  	$('.page').hide();
+  	$("#SignIn").show();
+  	$('.btnProfile').click(function(){
+  		$('.page').hide();
+  		$("#Profile").show();
+  	});
+	$('.btnChat').click(function(){
+  		$('.page').hide();
+  		$("#ChatRoom").show();
+  	});
+  	$('.btnEditProfile').click(function(){
+  		$('.page').hide();
+  		$("#ProfileUpdate").show();
+  	});
+  	$("#btnSignIn").click(function(){
+  		$('.page').hide();
+  		$("#Profile").show();
+  	});
+  });
+  function SignOut(){
+    firebase.auth().signOut();
+    console.log('LogOut');
+    $('.page').hide();
+    $("#SignIn").show();
+    return true;
+  }
+  </script>
+
+</end>
+<body>
+  <!-- SIGNIN MARKUP -->
+  <div id="SignIn" class="mdl-card mdl-shadow--2dp hover-shadow page">
+    <div class="mdl-card__title mdl-color--grey-800 mdl-color-text--white">
+      <h2 class="mdl-card__title-text">Sign In</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+      <!-- SignIn Form -->
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="email">
+          <label class="mdl-textfield__label" for="email">E-mail</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="password" id="password">
+          <label class="mdl-textfield__label" for="password">Password</label>
+        </div>
+      </form>
+
+      <!-- SignIn/SignUp Button -->
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="btnSignIn">Sign In</button>
+      &nbsp
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="btnSignUp">Sign Up</button>
+
+      <!-- Sign Information -->
+      <div class="mdl-card__supporting-text" id="sign-info" >No one login...</div>
+
+      <a href="#" class="space" onclick="return SignOut();">Log Out</a>
+    </div>
+  </div><!-- mdl-card -->
+  
+  <!-- Profile MARKUP -->
+  <div id="Profile" class="mdl-card mdl-shadow--2dp hover-shadow page">
+    <div class="mdl-card__title mdl-color--grey-800 mdl-color-text--white">
+      <h2 class="mdl-card__title-text">Profile</h2>
+    </div>
+    <div class="mdl-grid">
+      <div class="mdl-card__supporting-text" id="user-pic">
+        <img src="" class="demo-avatar">
+      </div>
+      <div class="mdl-card__supporting-text" id="user-info">
+        <ul id='example-messages' class="messages">
+          <li><strong>Name</strong>: <span id="profile-name">N/A</span></li>
+          <li><strong>Email</strong>: <span id="profile-email">N/A</span></li>
+          <li><strong>Occupation</strong>: <span id="profile-occupation">N/A</span></li>
+          <li><strong>Age</strong>: <span id="profile-age">N/A</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mdl-card__title">
+      <a href="#" title="Edit Profile" class="btnEditProfile"><i class="mdl-card__title-text material-icons">picture_in_picture&nbsp</i></a>
+      <a href="#" title="Chat Room" class="btnChat"><i class="mdl-card__title-text material-icons">message&nbsp</i></a>
+      <a href="#" title="Log Out" onclick="return SignOut();"><i class="mdl-card__title-text material-icons">call_made</i></a>
+    </div>
+  </div>
+    
+    <!-- PROFILE Update MARKUP -->
+  <div id="ProfileUpdate" class="mdl-card mdl-shadow--2dp hover-shadow page">
+    <div class="mdl-card__title mdl-color--grey-800 mdl-color-text--white">
+      <h2 class="mdl-card__title-text">Profile Update</h2>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+      <!-- User Info Form -->
+      <form action="#">
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text" id="userName">
+          <label class="mdl-textfield__label" for="sample1">Username</label>
+        </div>
+        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+          <input class="mdl-textfield__input" type="text">
+          <label class="mdl-textfield__label" >Occupation</label>
+        </div><div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+        <input class="mdl-textfield__input" type="text">
+        <label class="mdl-textfield__label" >Age</label>
+      </div>
+      </form>
+      <div class="mdl-textfield mdl-js-textfield">
+        <h6>Stickers : </h6>
+        <input type="file" id="file" name="file"/>
+      </div>
+
+      <!-- SignIn/SignUp/Logout Button -->
+      <button class="mdl-button mdl-js-button mdl-button--raised" id="btnSubmit">Submit</button>
+    </div>
+    <div class="mdl-card__title">
+      <a href="#" title="Profile" class="btnProfile"><i class="mdl-card__title-text material-icons">perm_identity&nbsp</i></a>
+      <a href="#" title="Chat Room" class="btnChat"><i class="mdl-card__title-text material-icons">message&nbsp</i></a>
+      <a href="#" title="Log Out" onclick="return SignOut();"><i class="mdl-card__title-text material-icons">call_made</i></a>
+    </div>
+  </div>
+
+	<!-- CHAT MARKUP -->
+  <div id="ChatRoom" class="mdl-card mdl-shadow--2dp hover-shadow page">
+    <div class="mdl-card__title mdl-color--grey-800 mdl-color-text--white">
+      <h2 class="mdl-card__title-text">Chat Room</h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+
+      <ul id='messages' class="messages"></ul>
+
+      <footer>
+        <div class="mdl-layout__content mdl-color--grey-100">
+          <input class="mdl-textfield__input" style="display:inline;width:auto;" type="text" id="messageInput" name="email" placeholder="Type a message ..."/>
+        </div>
+        <div class="mdl-card__title">
+          <a href="#" title="Profile" class="btnProfile"><i class="mdl-card__title-text material-icons">perm_identity&nbsp</i></a>
+          <a href="#" title="Edit Profile" class="btnEditProfile"><i class="mdl-card__title-text material-icons">picture_in_picture&nbsp</i></a>
+          <a href="#" title="Log Out" onclick="return SignOut();"><i class="mdl-card__title-text material-icons">call_made</i></a>
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
